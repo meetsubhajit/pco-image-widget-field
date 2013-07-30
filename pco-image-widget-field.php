@@ -4,7 +4,7 @@ Plugin Name: Pco Image Widget Field
 Plugin URI: http://peytz.dk/medarbejdere/
 Description: An easy way to add an image field to your custom build widget.
 Version: 1.0
-Author: Peytz
+Author: Peytz (Patrick Hesselberg & James Bonham)
 Author URI: http://peytz.dk/medarbejdere/
 */
 
@@ -35,6 +35,7 @@ function pco_image_field( $obj, $instance, $settings = array() ) {
 	$settings = wp_parse_args( $settings, $defaults );
 	extract( $settings );
 
+	$instance[$field] = !empty( $instance[$field] ) ? $instance[$field] : '';
 	$image = wp_get_attachment_image_src( $instance[$field], 'medium' );
 	$src = !empty( $image ) ? current( $image ) : '';
 	?>
