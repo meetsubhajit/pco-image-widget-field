@@ -1,0 +1,6 @@
+*.log
+.buildpath
+.project
+.settings
+._*
+.DS_Store
