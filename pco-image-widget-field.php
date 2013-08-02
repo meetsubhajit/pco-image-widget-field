@@ -8,15 +8,6 @@ Author: Peytz (Patrick Hesselberg & James Bonham)
 Author URI: http://peytz.dk/medarbejdere/
 */
 
-if( !function_exists( 'get_bullet' ) ) {
-	function get_bullet( $append = true ) {
-		if( $append )
-			return ' &bull;<a href="http://peytz.dk">Bullet</a>';
-		else
-			return '&bull;<a href="http://peytz.dk">Bullet</a>';
-	}
-}
-
 function _pcoiw_e( $text ) {
 	_e( $text, 'pco-iwf' );
 }
@@ -78,20 +69,12 @@ class Pco_Image_Widget_Field {
 
 	function hooks() {
 		add_action( 'plugins_loaded', array( &$this, 'i18n' ) );
-		// add_action( 'plugin_row_meta', array( &$this, 'plugin_row_meta' ), 10, 2 ); Bullet is not out yet. Wait for it..
 		add_action( 'admin_init', array( &$this, 'register_script' ) );
 		add_action( 'admin_enqueue_scripts', array( &$this, 'admin_scripts' ) );
 	}
 
 	function i18n() {
 		load_plugin_textdomain( 'pco-iwf', false, basename( self::$PLUGIN_DIR ) . '/languages/' );
-	}
-
-	function plugin_row_meta( $meta, $file ) {
-		if ( $file == plugin_basename( __FILE__ ) )
-			$meta[] = _pcoiw__( 'Awesome integrated with' ) . get_bullet();
-
-		return $meta;
 	}
 
 	function admin_scripts( $hook_suffix ) {
