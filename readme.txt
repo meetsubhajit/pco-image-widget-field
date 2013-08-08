@@ -1,5 +1,5 @@
 === Pco Image Widget Field ===
-Contributors: peytzco, compute, jamesbonham
+Contributors: PeytzCo, Compute, jamesbonham
 Tags: image, upload, widget
 Requires at least: 3.5.0
 Tested up to: 3.6
