@@ -1,5 +1,5 @@
 === Pco Image Widget Field ===
-Contributors: compute, jamesbonham
+Contributors: peytzco, compute, jamesbonham
 Tags: image, upload, widget
 Requires at least: 3.5.0
 Tested up to: 3.6
@@ -14,24 +14,23 @@ Easily add image fields to your custom widgets.
 = Features =
 Pco Image Widget Field allows developers to add multiple image fields to custom widgets.
 
-By calling <code>pco_image_widget()</code> inside your widget's form() function, you will be able to give your users a way to add images via the WordPress Media Frame.
+By calling `pco_image_widget()` inside your widget's form() function, you will be able to give your users a way to add images via the WordPress Media Frame.
 
 = Translations =
-English by [compute](http://profiles.wordpress.org/compute)
-Danish by [compute](http://profiles.wordpress.org/compute)
+* Standard English by [compute](http://profiles.wordpress.org/compute)
+* Danish by [compute](http://profiles.wordpress.org/compute)
 
-There are just a few strings to translate. However, it would be great to have more languages available.
-Please [contact us](mailto:phh@peytz.dk) to add your translation to the plugin!
+There are just a few strings to translate. However, it would be great to have more languages available. Please [contact us](mailto:wordpress@peytz.dk) to add your translation to the plugin!
 
 == Installation ==
 
 1. Add the plugin by either downloading the folder and uploading it to the wp-content/plugins directory or install it from the Control Panel using Plugins->Add New.
 1. Activate Pco Image Widget Field from the Plugins menu using Plugins->Installed Plugins.
-1. Put <code>pco_image_field( $this, $instance );</code> inside your Widget's form() method.
+1. Put `pco_image_field( $this, $instance );` inside your Widget's form() method.
 
 = Configuration =
 
-It's possible to add settings to the function by adding a settings array as a third argument: <code>array( 'title' => 'your-title', 'update' => 'your-update-text', 'field' => 'your-image-field' )</code>. Here are what each setting does…
+It's possible to add settings to the function by adding a settings array as a third argument: `array( 'title' => 'your-title', 'update' => 'your-update-text', 'field' => 'your-image-field' )`. Here are what each setting does…
 
 * **title** - The title text in the upper left corner of the Media Frame. Defaults to ´Image´
 * **update-text** - The text on the update button in the lower right corner of the Media Frame. Defaults to ´Update Image´
@@ -48,7 +47,7 @@ Older versions of WordPress will have to use thickbox instead. You can use the [
 = Will this automatically add an image field to my widget when I install it? =
 
 No. This plugin just creates the building blocks.
-You will have to manually add the function <code>pco_image_field( $this, $instance )</code> inside your widget.
+You will have to manually add the function `pco_image_field( $this, $instance )` inside your widget.
 
 = But I cannot code =
 Sad. Try these alternatives instead: [Image Widget](http://wordpress.org/plugins/image-widget/) or [Simple Image Widget](http://wordpress.org/plugins/simple-image-widget/)
@@ -56,26 +55,26 @@ Sad. Try these alternatives instead: [Image Widget](http://wordpress.org/plugins
 This plugin was build to let developers easily add an image field to their widgets. If you have a developer available this will be an easy task.
 
 = I have added the function but it returns warnings and kills my script. Eh? =
-Make sure the plugin has been activated. Adding a function that doesn't exists will produce a PHP warning and kill the script. To prevent these errors you can use a function_exists before calling <code>pco_image_field()</code>.
+Make sure the plugin has been activated. Adding a function that doesn't exists will produce a PHP warning and kill the script. To prevent these errors you can use a function_exists before calling `pco_image_field()`.
 
 = What if I don't declare any fields to the settings array? =
 You don't have to define the settings array. The default field is image_id, and is recommended for simplicity.
 
 = What if I want to create multiple image fields inside my widget? =
 Define the field in the setting array. For example:
-<code>pco_image_field( $this, $instance, array( 'field' => 'my_image_id' ) );
+`pco_image_field( $this, $instance, array( 'field' => 'my_image_id' ) );
 pco_image_field( $this, $instance, array( 'field' => 'my_next_image_id' ) );
-pco_image_field( $this, $instance, array( 'field' => 'my_last_image_id' ) );</code>
+pco_image_field( $this, $instance, array( 'field' => 'my_last_image_id' ) );`
 
 = The image will not save =
-Save your field inside your widgets <code>update()</code>.
+Save your field inside your widgets `update()`.
 
 = None of my data is saved =
 There is a problem with your widget.
 
 = It seems like it's saving my data but I don't get anything on the frontend? =
 Then you will have to output the image in your theme.
-Get the image id from <code>$instance['image_id'];</code> and use a function like <code>wp get attachment image();</code>.
+Get the image id from `$instance['image_id'];` and use a function like `wp get attachment image();`.
 
 = Well your plugin conflicts with... =
 Let us know!
