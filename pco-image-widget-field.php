@@ -27,22 +27,22 @@ function pco_image_field( $obj, $instance, $settings = array() ) {
 	extract( $settings );
 
 	$instance[$field] = !empty( $instance[$field] ) ? $instance[$field] : '';
-	$image = wp_get_attachment_image_src( $instance[$field], 'medium' );
+	$image = wp_get_attachment_image_src( $instance[$field], apply_filters( 'pcoiwf_preview_size', 'medium' ) );
 	$src = !empty( $image ) ? current( $image ) : '';
 	?>
-	<div style="text-align:center;border:2px dashed #ddd;padding:10px;">
+	<div class="pco-image-wrap">
 		<?php $image_id = $obj->get_field_id( $field ); ?>
 
-		<div class="pco-image" id="pco-image-<?php echo $image_id; ?>" style="overflow:hidden">
+		<div class="pco-image" id="pco-image-<?php echo $image_id; ?>">
 			<div class="newimage-section">
-				<input type="button" class="button pco-image-select" style="width:100%;height:36px;" value="<?php _pcoiw_e( 'Select image' ); ?>" data-title="<?php echo $title; ?>" data-update="<?php echo $update; ?>" data-target="<?php echo $image_id; ?>" />
+				<input type="button" class="button pco-image-select" value="<?php _pcoiw_e( 'Select image' ); ?>" data-title="<?php echo $title; ?>" data-update="<?php echo $update; ?>" data-target="<?php echo $image_id; ?>" />
 				<input type="hidden" class="pco-image-id" name="<?php echo $obj->get_field_name( $field ); ?>" id="<?php echo $image_id; ?>">
 			</div>
-			<div class="image-section" style="display:none">
-				<div style="text-align:center;">
+			<div class="image-section">
+				<div class="image">
 					<img src="<?php echo $src ?>" />
 				</div>
-				<div style="margin-top:5px;text-align:left;">
+				<div class="buttons">
 					<input type="hidden" name="<?php echo $obj->get_field_name( $field ); ?>" id="<?php echo $image_id; ?>" class="pco-image-id" value="<?php echo $instance[$field]; ?>">
 					<input type="button" class="button pco-image-select" data-title="<?php echo $title; ?>" data-update="<?php echo $update; ?>" data-target="<?php echo $image_id; ?>" value="<?php _pcoiw_e( 'Edit/change' ); ?>" />
 					<input type="button" class="button pco-image-remove" value="<?php _pcoiw_e( 'Remove' ); ?>" data-target="<?php echo $image_id; ?>" />
@@ -81,14 +81,19 @@ class Pco_Image_Widget_Field {
 		if ( 'widgets.php' == $hook_suffix ) {
 			wp_enqueue_media();
 			wp_enqueue_script( 'image-widget-field' );
+			wp_enqueue_style( 'image-widget-field' );
 		}
 	}
 
 	function register_script() {
 		wp_register_script( 'image-widget-field', self::$PLUGIN_URL . 'js/image-widget-field.js', array( 'media-upload', 'media-views' ) );
+		wp_register_style( 'image-widget-field', self::$PLUGIN_URL . 'css/styles.css' );
 	}
 }
 
-if( is_admin() )
-	new Pco_Image_Widget_Field();
+if( is_admin() ) {
+	global $pco_iwf;
+
+	$pco_iwf = new Pco_Image_Widget_Field();
+}
 
