@@ -14,7 +14,7 @@ Easily add image fields to your custom widgets.
 = Features =
 Pco Image Widget Field allows developers to add multiple image fields to custom widgets.
 
-By calling `pco_image_widget()` inside your widget's form() function, you will be able to give your users a way to add images via the WordPress Media Frame.
+By calling `pco_image_field()` inside your widget's form() function, you will be able to give your users a way to add images via the WordPress Media Frame.
 
 = Translations =
 * Standard English by [compute](http://profiles.wordpress.org/compute)
@@ -91,6 +91,12 @@ Please add a new ticket inside our support forum and tell us about the feature r
 4. And output the image in your widget.
 
 == Changelog ==
+
+= 1.0.1 =
+* Better handling of styles
+* Responsiveness in regards to mp6
+* Global: `$pco_iwf` - Globalization of the plugin object
+* Filter: `pcoiwf_preview_size` - Change the preview size if you're using wider widgets
 
 = 1.0 =
 * First release
