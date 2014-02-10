@@ -93,7 +93,7 @@ function pcoImageWidget($) {
 		},
 
 		// Initialize the whole object
-		init: function() {
+		init: function(selectors) {
 			// Initialize all pco-image widgets: show or hide image/newImage
 			var imageFields = $(".pco-image");
 			$.each(imageFields, function() {
@@ -109,7 +109,7 @@ function pcoImageWidget($) {
 			});
 
 			// Make sure the markup stays the same even after a click on the save button
-			$('#wpbody').on('click', '.widget-control-save', function() {
+			$(selectors).on('click', '.widget-control-save', function() {
 				// Do this after the ajax call and the values has been saved
 				$(this).ajaxSuccess(function() {
 					// Same thing as when we initialized the pco-image widgets. Just only initialize the one with the button clicked
@@ -127,7 +127,7 @@ function pcoImageWidget($) {
 			});
 
 			// Open media frame when we click the image button
-			$('#wpbody').on('click', '.pco-image-select', function(e) {
+			$(selectors).on('click', '.pco-image-select', function(e) {
 				e.preventDefault();
 
 				// Save all the data- attr inside a global variable
@@ -140,7 +140,7 @@ function pcoImageWidget($) {
 			});
 
 			// Hide image and set the target field to 0 to also remove it when the widget is saved
-			$('#wpbody').on('click', '.pco-image-remove', function(e) {
+			$(selectors).on('click', '.pco-image-remove', function(e) {
 				e.preventDefault();
 
 				var data = $(this).data();
@@ -156,6 +156,8 @@ function pcoImageWidget($) {
 		}
 	};
 
-	pcoImage.init();
+	var selectors = '#wpbody, #customize-controls';
+
+	pcoImage.init(selectors);
 }
 
