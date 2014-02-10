@@ -71,23 +71,32 @@ class Pco_Image_Widget_Field {
 		add_action( 'plugins_loaded', array( &$this, 'i18n' ) );
 		add_action( 'admin_init', array( &$this, 'register_script' ) );
 		add_action( 'admin_enqueue_scripts', array( &$this, 'admin_scripts' ) );
+		add_action( 'customize_controls_enqueue_scripts', array( &$this, 'customizer_scripts' ) );
 	}
 
 	function i18n() {
 		load_plugin_textdomain( 'pco-iwf', false, basename( self::$PLUGIN_DIR ) . '/languages/' );
 	}
 
-	function admin_scripts( $hook_suffix ) {
-		if ( 'widgets.php' == $hook_suffix ) {
-			wp_enqueue_media();
-			wp_enqueue_script( 'image-widget-field' );
-			wp_enqueue_style( 'image-widget-field' );
+	function admin_scripts( $hook ) {
+		if ( 'widgets.php' == $hook ) {
+			$this->add_media();
 		}
+	}
+
+	function customizer_scripts() {
+		$this->add_media();
 	}
 
 	function register_script() {
 		wp_register_script( 'image-widget-field', self::$PLUGIN_URL . 'js/image-widget-field.js', array( 'media-upload', 'media-views' ) );
 		wp_register_style( 'image-widget-field', self::$PLUGIN_URL . 'css/styles.css' );
+	}
+
+	function add_media() {
+		wp_enqueue_media();
+		wp_enqueue_script( 'image-widget-field' );
+		wp_enqueue_style( 'image-widget-field' );
 	}
 }
 
