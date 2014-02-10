@@ -22,6 +22,8 @@ By calling `pco_image_field()` inside your widget's form() function, you will be
 
 There are just a few strings to translate. However, it would be great to have more languages available. Please [contact us](mailto:wordpress@peytz.dk) to add your translation to the plugin!
 
+Contribute to [this project](https://github.com/Peytz-WordPress/pco-image-widget-field) on [github](https://github.com/Peytz-WordPress) or find [all of our favorite and custom made plugins](http://profiles.wordpress.org/peytzco/) 
+
 == Installation ==
 
 1. Add the plugin by either downloading the folder and uploading it to the wp-content/plugins directory or install it from the Control Panel using Plugins->Add New.
