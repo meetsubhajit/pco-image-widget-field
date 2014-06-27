@@ -1,0 +1,24 @@
+{
+    "name": "Peytz-WordPress/pco-image-widget-field",
+    "description": "An easy way to add an image field to your custom build widget.",
+    "type": "wordpress-plugin",
+    "keywords": ["wordpress", "plugin"],
+    "homepage": "https://github.com/Peytz-WordPress/pco-image-widget-field",
+    "authors": [
+        {
+            "name": "Peytz & Co",
+            "email": "wordpress@peytz.dk",
+            "homepage": "http://peytz.dk"
+        },
+        {
+            "name": "Patrick Hesselberg",
+            "email": "phh@peytz.dk",
+            "homepage": "http://peytz.dk/medarbejdere/phh"
+        },
+        {
+            "name": "James Bonham",
+            "email": "jb@peytz.dk",
+            "homepage": "http://peytz.dk/medarbejdere/jb"
+        }
+    ]
+}
